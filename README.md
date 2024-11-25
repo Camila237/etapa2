@@ -15,6 +15,10 @@ flutter pub get
 
 3. **Generar los archivos generados o .g**:
 Para generar los archivos necesarios, ejecuta el siguiente comando:
+
+> [!IMPORTANT]
+> Este comando se ejecuta cada vez que hagas un cambio en los modelos.
+
 ```bash
 dart run build_runner build
 ```
