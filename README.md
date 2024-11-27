@@ -13,7 +13,7 @@ Ejecuta el siguiente comando para instalar las dependencias del proyecto:
 flutter pub get
 ```
 
-3. **Generar los archivos generados o .g**:
+3. **Generar los archivos generados**:
 Para generar los archivos necesarios, ejecuta el siguiente comando:
 
 > [!IMPORTANT]
