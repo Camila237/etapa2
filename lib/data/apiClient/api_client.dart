@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:etapa2/apiClient/server_error.dart';
-import 'package:etapa2/entities/cart_model.dart';
-import 'package:etapa2/entities/product_model.dart';
-import 'package:etapa2/entities/user_model.dart';
+import 'package:etapa2/data/apiClient/server_error.dart';
+import 'package:etapa2/data/entities/cart_model.dart';
+import 'package:etapa2/data/entities/product_model.dart';
+import 'package:etapa2/data/entities/user_model.dart';
 import 'package:etapa2/utils/app_constants.dart';
 import 'package:etapa2/utils/dimens.dart';
 import 'package:retrofit/retrofit.dart';

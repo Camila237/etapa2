@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:etapa2/entities/rating_model.dart';
+import 'package:etapa2/data/entities/rating_model.dart';
 
 part 'product_model.g.dart';
 

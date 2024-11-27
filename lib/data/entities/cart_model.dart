@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:etapa2/entities/cart_product_model.dart';
+import 'package:etapa2/data/entities/cart_product_model.dart';
 
 part 'cart_model.g.dart';
 

@@ -1,4 +1,4 @@
-import 'package:etapa2/apiClient/api_client.dart';
+import 'package:etapa2/data/apiClient/api_client.dart';
 
 /// * FetchProducts gets a list of products from the API and prints them to the console.
 /// * This function uses the [ApiClient] client to make an HTTP request

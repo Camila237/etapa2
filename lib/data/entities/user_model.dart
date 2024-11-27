@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:etapa2/entities/address_model.dart';
-import 'package:etapa2/entities/name_model.dart';
+import 'package:etapa2/data/entities/address_model.dart';
+import 'package:etapa2/data/entities/name_model.dart';
 
 part 'user_model.g.dart';
 

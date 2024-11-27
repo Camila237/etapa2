@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:etapa2/entities/geolocation_model.dart';
+import 'package:etapa2/data/entities/geolocation_model.dart';
 
 part 'address_model.g.dart';
 
