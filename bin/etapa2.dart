@@ -1,4 +1,4 @@
-import 'package:etapa2/etapa2.dart' as etapa2;
+import 'package:package_fake_api_store/etapa2.dart' as etapa2;
 
 /// * The main function is the entry point of the program.
 void main(List<String> arguments) async{

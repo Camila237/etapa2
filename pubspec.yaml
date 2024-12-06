@@ -1,4 +1,4 @@
-name: etapa2
+name: package_fake_api_store
 description: A sample command-line application.
 version: 1.0.0
 
@@ -6,13 +6,9 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
-  dio: ^5.4.0 # api consume
-  retrofit: '>=4.0.3 <5.0.0' # api consume
-  json_annotation: 4.9.0 # json annotation
+  http: ^1.2.2 # api consume
+  dartz: ^0.10.1 # functional programming
 
 dev_dependencies:
   lints: ^4.0.0
   test: ^1.24.0
-  retrofit_generator: ^8.1.0 # generator code from api
-  build_runner: any  # generator code
-  json_serializable: ^6.7.1  # generator code

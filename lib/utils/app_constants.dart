@@ -3,4 +3,4 @@
  * */
 
 /// * The URL of the API.
-const String appUrl = 'https://fakestoreapi.com/';
+const String appUrl = 'https://fakestoreapi.com';

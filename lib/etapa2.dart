@@ -1,4 +1,10 @@
-import 'package:etapa2/data/apiClient/api_client.dart';
+import 'package:dartz/dartz.dart';
+import 'package:http/http.dart' as http;
+import 'package:package_fake_api_store/data/apiClient/api_error.dart';
+import 'package:package_fake_api_store/data/apiClient/http_client.dart';
+import 'package:package_fake_api_store/data/entities/cart_model.dart';
+import 'package:package_fake_api_store/data/entities/product_model.dart';
+import 'package:package_fake_api_store/data/entities/user_model.dart';
 
 /// * FetchProducts gets a list of products from the API and prints them to the console.
 /// * This function uses the [ApiClient] client to make an HTTP request
@@ -6,17 +12,19 @@ import 'package:etapa2/data/apiClient/api_client.dart';
 /// * about each product, including its name, price, and rating.
 /// * If an error occurs, the server error message is displayed.
 Future<void> fetchProducts() async {
-  ApiClient apiClient = ApiClient();
-  try {
-    print('--------------------------');
-    print('Obteniendo productos...');
-    final response = await apiClient.getProducts();
-    for (var product in response) {
-      print('Nombre: ${product.title} - Precio: ${product.price} - Puntuación: ${product.rating.rate}');
-    }
-  } catch (e) {
-    print('Error al obtener los productos: $e');
-  }
+  final HttpClient httpClient = HttpClient(http.Client());
+  final ProductsApiService productsApiService = ProductsApiService(httpClient);
+  print('--------------------------');
+  print('Obteniendo productos...');
+  final Either<ApiError, List<ProductModel>> response = await productsApiService.fetchData();
+  response.fold(
+        (ApiError error) => print(error.message),
+        (List<ProductModel>products) {
+          for (ProductModel product in products) {
+            print('Nombre: ${product.title} - Precio: ${product.price} - Puntuación: ${product.rating.rate}');
+          }
+        },
+  );
 }
 
 /// * FetchUsers gets a list of users from the API and prints them to the console.
@@ -25,17 +33,19 @@ Future<void> fetchProducts() async {
 /// * about each user, including their name and email.
 /// * If an error occurs, the server error message is displayed.
 Future<void> fetchUsers() async {
-  ApiClient apiClient = ApiClient();
-  try {
-    print('--------------------------');
-    print('Obteniendo usuarios...');
-    final response = await apiClient.getUsers();
-    for (var user in response) {
-      print('Nombre: ${user.name.firstname} - Email: ${user.email}');
-    }
-  } catch (e) {
-    print('Error al obtener los usuarios: $e');
-  }
+  final HttpClient httpClient = HttpClient(http.Client());
+  final UsersApiService usersApiService = UsersApiService(httpClient);
+  print('--------------------------');
+  print('Obteniendo usuarios...');
+  final  Either<ApiError, List<UserModel>> response = await usersApiService.fetchData();
+  response.fold(
+        (ApiError error) => print(error.message),
+        (List<UserModel>users) {
+          for (UserModel user in users) {
+            print('Nombre: ${user.name.firstname} - Email: ${user.email}');
+          }
+        },
+  );
 }
 
 /// * FetchCarts gets a list of carts from the API and prints them to the console.
@@ -44,15 +54,17 @@ Future<void> fetchUsers() async {
 /// * about each cart, including the user ID and products.
 /// * If an error occurs, the server error message is displayed.
 Future<void> fetchCarts() async {
-  ApiClient apiClient = ApiClient();
-  try {
-    print('--------------------------');
-    print('Obteniendo carritos...');
-    final response = await apiClient.getCarts();
-    for (var cart in response) {
-      print('Usuario: ${cart.userId} - Productos: ${cart.products}');
-    }
-  } catch (e) {
-    print('Error al obtener los usuarios: $e');
-  }
+  final HttpClient httpClient = HttpClient(http.Client());
+  final CartsApiService cartsApiService = CartsApiService(httpClient);
+  print('--------------------------');
+  print('Obteniendo carritos...');
+  final Either<ApiError, List<CartModel>> response = await cartsApiService.fetchData();
+  response.fold(
+        (ApiError error) => print(error.message),
+        (List<CartModel> carts) {
+          for (CartModel cart in carts) {
+            print('Usuario: ${cart.userId} - Productos: ${cart.products}');
+          }
+    },
+  );
 }

@@ -1,11 +1,7 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:etapa2/data/entities/cart_product_model.dart';
-
-part 'cart_model.g.dart';
+import 'package:package_fake_api_store/data/entities/cart_product_model.dart';
 
 /// * The CartModel class is a model class that represents a cart.
 /// * It contains information about the cart, such as its ID, user ID, date, and products.
-@JsonSerializable()
 class CartModel{
  final int id;
  final int userId;
@@ -21,11 +17,26 @@ class CartModel{
 
   /// * The fromJson method is a factory method that creates a CartModel instance from a JSON object.
  factory CartModel.fromJson(
-     Map<String, dynamic> json) => _$CartModelFromJson(json);
+     Map<String, dynamic> json) {
+    return CartModel(
+      id: json['id'],
+      userId: json['userId'],
+      date: json['date'],
+      products: (json['products'] as List)
+          .map((product) => CartProductModel.fromJson(product))
+          .toList(),
+    );
+  }
 
  /// * The toJson method is a method that converts a CartModel instance to a JSON object.
- Map<String, dynamic> toJson() =>
-     _$CartModelToJson(this);
+ Map<String, dynamic> toJson() {
+   return {
+     'id': id,
+     'userId': userId,
+     'date': date,
+     'products': products.map((product) => product.toJson()).toList(),
+   };
+ }
 
  @override
   String toString() {

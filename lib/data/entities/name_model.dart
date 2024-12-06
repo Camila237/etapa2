@@ -1,10 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'name_model.g.dart';
-
 /// * The NameModel class is a model class that represents a name.
 /// * It contains information about the name, such as the first name and last name.
-@JsonSerializable()
 class NameModel{
   final String firstname;
   final String lastname;
@@ -16,11 +11,20 @@ class NameModel{
 
   /// * The fromJson method is a factory method that creates a NameModel instance from a JSON object.
   factory NameModel.fromJson(
-      Map<String, dynamic> json) => _$NameModelFromJson(json);
+      Map<String, dynamic> json) {
+    return NameModel(
+      firstname: json['firstname'],
+      lastname: json['lastname'],
+    );
+  }
 
   /// * The toJson method is a method that converts a NameModel instance to a JSON object.
-  Map<String, dynamic> toJson() =>
-      _$NameModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'firstname': firstname,
+      'lastname': lastname,
+    };
+  }
 
   @override
   String toString() {

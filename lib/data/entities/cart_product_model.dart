@@ -1,10 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'cart_product_model.g.dart';
-
 /// * The CartProductModel class is a model class that represents a cart product.
 /// * It contains information about the product ID and quantity.
-@JsonSerializable()
 class CartProductModel{
   final int productId;
   final int quantity;
@@ -16,11 +11,20 @@ class CartProductModel{
 
   /// * The fromJson method is a factory method that creates a CartProductModel instance from a JSON object.
   factory CartProductModel.fromJson(
-      Map<String, dynamic> json) => _$CartProductModelFromJson(json);
+      Map<String, dynamic> json) {
+    return CartProductModel(
+      productId: json['productId'],
+      quantity: json['quantity'],
+    );
+  }
 
   /// * The toJson method is a method that converts a CartProductModel instance to a JSON object.
-  Map<String, dynamic> toJson() =>
-      _$CartProductModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'productId': productId,
+      'quantity': quantity,
+    };
+  }
 
   @override
   String toString() {

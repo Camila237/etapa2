@@ -1,10 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'rating_model.g.dart';
-
 /// * The RatingModel class is a model class that represents a rating.
 /// * It contains information about the rating, such as the rate and count.
-@JsonSerializable()
 class RatingModel{
   final double rate;
   final int count;
@@ -16,11 +11,20 @@ class RatingModel{
 
   /// * The fromJson method is a factory method that creates a RatingModel instance from a JSON object.
   factory RatingModel.fromJson(
-      Map<String, dynamic> json) => _$RatingModelFromJson(json);
+      Map<String, dynamic> json) {
+    return RatingModel(
+      rate: (json['rate'] as num).toDouble(),
+      count: json['count'],
+    );
+  }
 
   /// * The toJson method is a method that converts a RatingModel instance to a JSON object.
-  Map<String, dynamic> toJson() =>
-      _$RatingModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'rate': rate,
+      'count': count,
+    };
+  }
 
   @override
   String toString() {

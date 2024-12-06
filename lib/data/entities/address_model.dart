@@ -1,11 +1,7 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:etapa2/data/entities/geolocation_model.dart';
-
-part 'address_model.g.dart';
+import 'package:package_fake_api_store/data/entities/geolocation_model.dart';
 
 /// * The AddressModel class is a model class that represents an address.
 /// * It contains information about the address, such as the geolocation, city, street, number, and zipcode.
-@JsonSerializable()
 class AddressModel{
   GeolocationModel geolocation;
   final String city;
@@ -23,12 +19,25 @@ class AddressModel{
 
 
   /// * The fromJson method is a factory method that creates an AddressModel instance from a JSON object.
-  factory AddressModel.fromJson(
-      Map<String, dynamic> json) => _$AddressModelFromJson(json);
+  factory AddressModel.fromJson(Map<String, dynamic> json) {
+    return AddressModel(
+      geolocation: GeolocationModel.fromJson(json['geolocation']),
+      city: json['city'],
+      street: json['street'],
+      number: json['number'],
+      zipcode: json['zipcode'],
+    );
+  }
 
-  /// * The toJson method is a method that converts an AddressModel instance to a JSON object.
-  Map<String, dynamic> toJson() =>
-      _$AddressModelToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'geolocation': geolocation.toJson(),
+      'city': city,
+      'street': street,
+      'number': number,
+      'zipcode': zipcode,
+    };
+  }
 
   @override
   String toString() {
