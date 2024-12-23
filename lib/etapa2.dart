@@ -2,9 +2,12 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:package_fake_api_store/data/apiClient/api_error.dart';
 import 'package:package_fake_api_store/data/apiClient/http_client.dart';
-import 'package:package_fake_api_store/data/entities/cart_model.dart';
-import 'package:package_fake_api_store/data/entities/product_model.dart';
-import 'package:package_fake_api_store/data/entities/user_model.dart';
+import 'package:package_fake_api_store/data/models/cart_model.dart';
+import 'package:package_fake_api_store/data/models/product_model.dart';
+import 'package:package_fake_api_store/data/models/user_model.dart';
+import 'package:package_fake_api_store/domain/services/carts_api_service.dart';
+import 'package:package_fake_api_store/domain/services/products_api_service.dart';
+import 'package:package_fake_api_store/domain/services/users_api_service.dart';
 
 /// * FetchProducts gets a list of products from the API and prints them to the console.
 /// * This function uses the [ApiClient] client to make an HTTP request
@@ -21,7 +24,7 @@ Future<void> fetchProducts() async {
         (ApiError error) => print(error.message),
         (List<ProductModel>products) {
           for (ProductModel product in products) {
-            print('Nombre: ${product.title} - Precio: ${product.price} - Puntuación: ${product.rating.rate}');
+            print('Nombre: ${product.title} - Precio: ${product.price} - Puntuación: ${product.rating?.rate}');
           }
         },
   );
@@ -42,7 +45,7 @@ Future<void> fetchUsers() async {
         (ApiError error) => print(error.message),
         (List<UserModel>users) {
           for (UserModel user in users) {
-            print('Nombre: ${user.name.firstname} - Email: ${user.email}');
+            print('Nombre: ${user.name?.firstname} - Email: ${user.email}');
           }
         },
   );
